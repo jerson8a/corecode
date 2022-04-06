@@ -1,2 +1,65 @@
 # corecode
-Fullstack Bootcamp
+# Fullstack developer Bootcamp
+
+
+## Here are my solutions
+
+## 1. Week 1
+### Week challenges (Tuesday) 💻
+#### Ensure question
+
+Instructions: Given a string, write a function that returns the string with a question mark ("?") appends to the end, unless the original string ends with a question mark, in which case, returns the original string.
+
+Example 1
+
+    "Yes" --> "Yes?" 
+    "No?" --> "No?" 
+
+Link to codewars: https://www.codewars.com/kata/5866fc43395d9138a7000006
+
+##### Solution
+
+```
+function ensureQuestion(s) {
+  if (s.substr(-1) !== "?") {
+    s = s + "?";
+  }
+  return s;
+}
+```
+
+#### Reversed words
+
+Instructions: Complete the solution so that it reverses all of the words within the string passed in.
+
+Example 1
+
+    "The greatest victory is that which requires no battle" --> "battle no requires which that is victory greatest The"
+    
+Link to codewars: https://www.codewars.com/kata/51c8991dee245d7ddf00000e
+    
+##### Solution
+```
+function reverseWords(str){
+  let auxArr = [];
+  let inicio = 0;
+  for(i = 0; i < str.length; i++) {
+    if (str[i] == " "){
+      auxArr.unshift(str.substr(inicio, i - inicio));
+      auxArr.unshift(" ");
+      inicio = i + 1;
+    }
+    if (i === (str.length - 1)) {
+      auxArr.unshift(str.substr(inicio, i + 1 - inicio));
+      inicio = i + 1;
+    }
+  }
+  
+  str = "";
+  
+  for (i = 0; i < auxArr.length; i++) {
+    str = str + auxArr[i];
+  }
+  return str;
+}
+```

@@ -116,3 +116,25 @@ function oddOrEven(array) {
   return (suma%2===0) ? "even":"odd";
 }
 ```
+
+## 2. Week 2
+
+### Week challenges (Thuesday) 💻
+#### Is palíndrome? 
+
+Instructions: A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward. This includes capital letters, punctuation, and word dividers.
+
+Implement a function that checks if something is a palindrome. If the input is a number, convert it to string first.
+
+Examples
+isPalindrome("anna")   ==> true
+isPalindrome("walter") ==> false
+isPalindrome(12321)    ==> true
+isPalindrome(123456)   ==> false
+
+##### Solution
+```
+function isPalindrome(line) {
+  return new String(line).split("").reverse().join("") == line;
+}
+```

@@ -119,7 +119,7 @@ function oddOrEven(array) {
 
 ## 2. Week 2
 
-### Week challenges (Thuesday) 💻
+### Week challenges (Monday) 💻
 #### Is palíndrome? 
 
 Instructions: A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward. This includes capital letters, punctuation, and word dividers.
@@ -138,3 +138,37 @@ function isPalindrome(line) {
   return new String(line).split("").reverse().join("") == line;
 }
 ```
+
+### Week challenges (Thuesday) 💻
+#### Well of ideas
+
+Instructions: For every good kata idea there seem to be quite a few bad ones!
+
+In this kata you need to check the provided array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'.
+
+Example 1
+
+    well(['bad', 'bad', 'bad']) => 'Fail!'
+    well(['good', 'bad', 'bad', 'bad', 'bad']) => 'Publish!'
+    well(['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good']) => 'I smell a series!'
+  
+Link to codewars: https://www.codewars.com/kata/57f222ce69e09c3630000212/train/javascript
+
+##### Solution
+
+````
+function well(x){
+  let count = 0;
+  x.forEach((item) => {
+    if (item == "good") {
+      count++;
+    }
+  })
+  if (count === 1) {
+    return "Publish!";
+  } else if (count > 1) {
+    return 'I smell a series!';
+  } else {
+    return "Fail!";
+  }
+}

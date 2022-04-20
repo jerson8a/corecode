@@ -166,7 +166,7 @@ function well(x){
   })
   if (count === 1) {
     return "Publish!";
-  } else if (count > 1) {
+  } else if (count > 2) {
     return 'I smell a series!';
   } else {
     return "Fail!";

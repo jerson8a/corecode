@@ -224,3 +224,70 @@ export class Counter extends React.Component {
 }
 
 ```
+
+### Week challenges (Thursday) 💻
+#### React santa wishlist
+
+Instructions: Santa wants to simplify his life and offer children the possiblity to enter their wishlist via an online form.
+
+The form should be a React component and should contain:
+
+an input field for the child's name (with id 'name')
+a text area to describe the wish (id: 'wish')
+a drop-down indicating the priority of the wish, from 1 to 5 - default is 1 (id: 'priority')
+the keys in the state to store the corresponding values should be named the same as the element's id
+an onSubmit action calling the function handleSubmit
+a function called handleSubmit, which
+calls send (a function that is already provided as part of the injected properties props)
+passes the current state as a parameter to send
+calls event.preventDefault
+it should be a controlled component (i.e. using onChange to bind input to the component's state)
+
+Link to codewars: https://www.codewars.com/kata/5a9ecd89fd5777e0790001ea
+
+##### Solution
+````
+import { useState } from "react";
+import "./styles.css";
+
+export default function App(props) {
+  const { send } = props;
+  const [name, setName] = useState("");
+  const [wish, setWish] = useState("");
+  const [priority, setPriority] = useState(1);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    send(wish);
+  };
+  return (
+    <div className="App">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <textarea
+          id="wish"
+          value={wish}
+          onChange={(e) => setWish(e.target.value)}
+        ></textarea>
+        <select
+          name="priority"
+          id="priority"
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </form>
+    </div>
+  );
+}
+````

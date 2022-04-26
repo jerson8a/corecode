@@ -291,3 +291,55 @@ export default function App(props) {
   );
 }
 ````
+
+
+## 1. Week 3
+### Week challenges (Monday) 💻
+#### Build Search filter in React
+
+Instructions: React code to build a simple search filter functionality to display a filtered list based on the search query entered by the user.
+
+##### Solution
+
+```
+export default function App() {
+  const [texto, setTexto] = useState("");
+  const words = [
+    "banana",
+    "apple",
+    "orange",
+    "mango",
+    "pinneapple",
+    "watermelon"
+  ];
+  const [wordsF, setWordsF] = useState([]);
+
+  useEffect(() => {
+    if (texto.length > 0) {
+      setWordsF(
+        words.filter(function (el) {
+          return el.toLowerCase().indexOf(texto.toLowerCase()) > -1;
+        })
+      );
+    } else {
+      setWordsF(words);
+    }
+  }, [texto]);
+
+  return (
+    <div className="App">
+      <label for="txtTexto">Search: </label>
+      <input
+        type="text"
+        value={texto}
+        onChange={(e) => setTexto(e.target.value)}
+      />
+      {wordsF.map((item) => {
+        return <p>{item}</p>;
+      })}
+    </div>
+  );
+}
+
+```
+

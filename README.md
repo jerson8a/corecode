@@ -335,6 +335,7 @@ export default function App() {
       {wordsF.map((item, index) => {
         return <p key={index}>{item}</p>;
       })}
+      {wordsF.length === 0 && <p>No hay coincidencias</p>}
     </div>
   );
 }

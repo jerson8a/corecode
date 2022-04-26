@@ -315,15 +315,13 @@ export default function App() {
   const [wordsF, setWordsF] = useState([]);
 
   useEffect(() => {
-    if (texto.length > 0) {
-      setWordsF(
-        words.filter(function (el) {
-          return el.toLowerCase().indexOf(texto.toLowerCase()) > -1;
-        })
-      );
-    } else {
-      setWordsF(words);
-    }
+    texto.length > 0
+      ? setWordsF(
+          words.filter(function (el) {
+            return el.toLowerCase().indexOf(texto.toLowerCase()) > -1;
+          })
+        )
+      : setWordsF(words);
   }, [texto]);
 
   return (
@@ -334,8 +332,8 @@ export default function App() {
         value={texto}
         onChange={(e) => setTexto(e.target.value)}
       />
-      {wordsF.map((item) => {
-        return <p>{item}</p>;
+      {wordsF.map((item, index) => {
+        return <p key={index}>{item}</p>;
       })}
     </div>
   );

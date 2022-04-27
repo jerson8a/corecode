@@ -342,3 +342,50 @@ export default function App() {
 
 ```
 
+
+### Week challenges (Thuesday) 💻
+#### Fetch Random User Data
+
+Instructions: React code to fetch from this API random users. You should display the Name, website, email and phone of a random user. Also there should be a Reset button to fetch a new user (For this you need to generate a random number from 1 to 10).
+
+````
+import { useEffect, useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  const getUserData = () => {
+    let number = Math.floor(Math.random() * 10);
+    fetch(`https://jsonplaceholder.typicode.com/users/${number}`)
+      .then((response) => response.json())
+      .then((json) => setUserData(json));
+  };
+  return (
+    <div className="App">
+      <button onClick={getUserData}>Reset</button>
+      <h1>User Data</h1>
+      <p>
+        <strong>Name: </strong>
+        {userData.name}
+      </p>
+      <p>
+        <strong>Website: </strong>
+        {userData.website}
+      </p>
+      <p>
+        <strong>Email: </strong>
+        {userData.email}
+      </p>
+      <p>
+        <strong>Phone: </strong>
+        {userData.phone}
+      </p>
+    </div>
+  );
+}
+````

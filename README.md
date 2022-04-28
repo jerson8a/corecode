@@ -389,3 +389,53 @@ export default function App() {
   );
 }
 ````
+
+
+### Week challenges (Wednesday) 💻
+#### React Router Blog
+
+Instructions: Create a blog with React Router and get info from posts from a json file.
+
+```
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Saludo from './Components/Saludo/Saludo';
+import BlogMenu from './Pages/BlogMenu/BlogMenu';
+import BlogReact from './Pages/BlogReact/BlogReact';
+import BlogCoreCode from './Pages/BlogCoreCode/BlogCoreCode';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path='/saludo' element={<Saludo />} />
+          <Route path='/blog' element={<BlogMenu />} />
+          <Route path='/blogreact' element={<BlogReact />} />
+          <Route path='/blogcorecode' element={<BlogCoreCode />} />
+        </Routes>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
+```
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const BlogMenu = () => {
+  return (
+    <>
+        <h1>Menu</h1>
+        <Link to="/blogreact">React</Link>
+        <p>Published by ⚡️ Jerson on 2022-04-27 </p>
+        <Link to="/blogcorecode">Core Code</Link>
+        <p>Published by ⚡️ Jerson on 2022-04-27 </p>
+    </>
+  )
+}
+
+export default BlogMenu
+````
+

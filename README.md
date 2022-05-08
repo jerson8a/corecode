@@ -348,6 +348,8 @@ export default function App() {
 
 Instructions: React code to fetch from this API random users. You should display the Name, website, email and phone of a random user. Also there should be a Reset button to fetch a new user (For this you need to generate a random number from 1 to 10).
 
+##### Solution
+
 ````
 import { useEffect, useState } from "react";
 import "./styles.css";
@@ -441,3 +443,137 @@ const BlogMenu = () => {
 export default BlogMenu
 ````
 
+## 4. Week 04
+
+### Week challenges (Monday) 💻
+#### Two To One
+
+Instructions: Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+
+Examples:
+a = "xyaabbbccccdefww"
+b = "xxxxyyyyabklmopq"
+longest(a, b) -> "abcdefklmopqwxy"
+
+a = "abcdefghijklmnopqrstuvwxyz"
+longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+
+Kata link: https://www.codewars.com/kata/5656b6906de340bd1b0000ac/train/javascript
+
+##### Solution
+````
+function longest(s1, s2) {
+  let auxString = s1 + s2;
+  let arr = Array.from(auxString).sort();
+
+  return result = arr.filter((item,index)=>{
+    return arr.indexOf(item) === index;
+  }).join("");
+}
+````
+
+
+### Week challenges (Tuesday) 💻
+#### Leap Years
+
+Instructions: In this kata you should simply determine, whether a given year is a leap year or not. In case you don't know the rules, here they are:
+
+years divisible by 4 are leap years
+but years divisible by 100 are not leap years
+but years divisible by 400 are leap years
+Additional Notes:
+
+Only valid years (positive integers) will be tested, so you don't have to validate them
+
+Kata link: https://www.codewars.com/kata/526c7363236867513f0005ca/train/javascript
+
+##### Solution
+```
+function isLeapYear(year) {
+  // TODO
+  if (year % 4 === 0) {
+    if (year % 100 === 0) {
+      if (year % 400 === 0) {
+        return true;
+      }
+      return false;
+    }
+    return true;
+  }
+  return false;
+}
+```
+
+### Week challenges (Wednesday) 💻
+#### Maximum Length Difference
+
+Instructions: You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
+
+Find max(abs(length(x) − length(y)))
+
+If a1 and/or a2 are empty return -1 in each language except in Haskell (F#) where you will return Nothing (None).
+
+Example:
+a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
+a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
+mxdiflg(a1, a2) --> 13
+
+Kata link: https://www.codewars.com/kata/5663f5305102699bad000056/train/javascript
+
+##### Solution
+````
+function mxdiflg(a1, a2) {
+  if (a1.length === 0 || a2.length === 0) return -1;
+  a1.sort((a, b) => a.length - b.length);
+  a2.sort((a, b) => a.length - b.length);
+  return Math.max(
+    Math.abs(a1[0].length - a2[a2.length - 1].length),
+    Math.abs(a2[0].length - a1[a1.length - 1].length)
+  );
+}
+
+````
+
+### Week challenges (Thursday) 💻
+#### Base64 Numeric Translator
+
+Instructions: Our standard numbering system is (Base 10). That includes 0 through 9. Binary is (Base 2), only 1’s and 0’s. And Hexadecimal is (Base 16) (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F). A hexadecimal “F” has a (Base 10) value of 15. (Base 64) has 64 individual characters which translate in value in (Base 10) from between 0 to 63.
+
+####Write a method that will convert a string from (Base 64) to it's (Base 10) integer value.
+
+The (Base 64) characters from least to greatest will be
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+Where 'A' is equal to 0 and '/' is equal to 63.
+
+Just as in standard (Base 10) when you get to the highest individual integer 9 the next number adds an additional place and starts at the beginning 10; so also (Base 64) when you get to the 63rd digit '/' and the next number adds an additional place and starts at the beginning "BA".
+
+Example:
+
+base64_to_base10("/") # => 63
+base64_to_base10("BA") # => 64
+base64_to_base10("BB") # => 65
+base64_to_base10("BC") # => 66
+Write a method base64_to_base10 that will take a string (Base 64) number and output it's (Base 10) value as an integer.
+
+Kata link: https://www.codewars.com/kata/5632e12703e2037fa7000061/train/javascript
+
+````
+function base64toBase10(base64) {
+  const base64Dictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  let multiplier = 0;
+  if (base64.length > 1) {
+    multiplier = 1;
+    let result = 0;
+    for (let i = base64.length - 1; i >= 0; i--) {
+      result += base64Dictionary.indexOf(base64[i]) * multiplier;
+      multiplier = multiplier * 64;
+    }
+    return result;
+  } else {
+    return base64Dictionary.indexOf(base64[base64.length - 1]);
+  }
+  let response = multiplier;
+  return response;
+}
+````

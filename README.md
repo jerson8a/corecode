@@ -577,3 +577,49 @@ function base64toBase10(base64) {
   return response;
 }
 ````
+
+## 5. Week 05
+
+### Week challenges (Monday) 💻
+#### Fun With Lists
+
+Kata link: https://www.codewars.com/kata/58259d9062cfb45e1a00006b/train/javascript
+
+Instructions: mplement the method map, which accepts a linked list (head) and a mapping function, and returns a new linked list (head) where every element is the result of applying the given mapping method to each element of the original list.
+
+For example: Given the list: 1 -> 2 -> 3, and the mapping function x => x * 2, map should return 2 -> 4 -> 6
+
+The linked list is defined as follows:
+
+function Node(data, next = null) {
+  this.data = data;
+  this.next = next;
+}
+Note: the list may be null and can hold any type of value.
+
+##### Solution
+
+````
+function map(head, f) {
+  if (head) {
+    let response = null, aux = null;     
+    let item = head; // Asignamos lista enlazada a nueva variable
+    while (item != null) { // Recorremos hasta que encuentre el final
+      if (response == null){ 
+        // Asignamos el primer item a la respuesta
+          response = new Node(f(item.data), null);
+        // Pasamos el item al auxiliar para seguir recorriendo
+          aux = response;
+      } else {
+        // Enlazamos el siguiente item en el auxiliar
+          aux.next = new Node(f(item.data), null); 
+        // Pasamos al item a la cabecera del auxiliar para seguir recorriendo
+          aux = aux.next;
+      }
+      // Le agregamos a la cola el siguiente item
+      item = item.next;
+    } 
+    return response;
+  }
+  return head;
+}

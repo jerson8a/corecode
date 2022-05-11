@@ -623,3 +623,53 @@ function map(head, f) {
   }
   return head;
 }
+````
+
+
+### Week challenges (Tuesday) 💻
+#### Separating Strings
+
+Kata link: https://www.codewars.com/kata/5977ef1f945d45158d00011f/train/javascript
+Instructions: Create a function that takes a string and separates it into a sequence of letters.
+
+The array will be formatted as so:
+
+[['J','L','L','M']
+,['u','i','i','a']
+,['s','v','f','n']
+,['t','e','e','']]
+The function should separate each word into individual letters, with the first word in the sentence having its letters in the 0th index of each 2nd dimension array, and so on.
+
+Shorter words will have an empty string in the place once the word has already been mapped out. (See the last element in the last part of the array.)
+
+##### Solution
+
+````
+function sepStr(str) {
+  let wordsArray = str.split(" ");
+  
+  let response = [];
+  let max = 0;
+  
+  wordsArray.forEach((item) => {
+    if (item.length > max) {
+      max = item.length;
+    }
+  })
+  
+  for (i = 0; i < max; i++) {
+    let auxLetArray = [];
+    wordsArray.map((item) => {
+      if (item[i]) {
+        auxLetArray.push(item[i]);
+      } else {
+        auxLetArray.push("");
+      }
+    })
+    response.push(auxLetArray);
+  }
+  return response;
+  
+}
+
+````
